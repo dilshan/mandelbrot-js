@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>Mandelbrot Generator</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js">
+
+    </script>
+    <script src="mandelbrot.js"></script>
+</head>
+
+<body>
+<div class="ui grid" style="margin: auto; width: 50%;">
+    <!-- Root layout table -->
+    <table style="text-align: left;" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr>
+            <td style="height: 17px; width: 960px;" colspan="5" rowspan="1" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px; height: 27px;" align="undefined" valign="undefined"></td>
+            <td colspan="3" rowspan="1" style="height: 27px; width: 960px;" align="undefined" valign="undefined"><!-- Heading table -->
+                <div class="ui message">
+                    <table style="text-align: left; width: 100%;" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="width: 20px; height: 5px;"></td>
+                            <td align="undefined" valign="undefined"></td>
+                            <td style="width: 50px;" align="undefined" valign="undefined"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;" align="undefined" valign="undefined"></td>
+                            <td style="text-align: right;" valign="undefined">
+                                <h3>Mandelbrot Generator</h3>
+                            </td>
+                            <td style="width: 50px;" align="undefined" valign="undefined"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20px;" align="undefined" valign="undefined"></td>
+                            <td align="undefined" valign="undefined"></td>
+                            <td style="width: 50px; height: 5px;" align="undefined" valign="undefined"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- End of heading table -->
+            </td>
+            <td style="width: 20px; height: 27px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td colspan="5" rowspan="1" style="height: 20px; width: 960px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px;" align="undefined" valign="undefined"></td>
+            <td style="width: 477px;" align="left" valign="undefined"><!-- Options table -->
+                <div class="column">
+                    <h4 class="ui top attached block header">Graph parameters</h4>
+
+                    <div class="ui bottom attached segment">
+                        <table style="text-align: left; width: 494px;" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">Fractal:</td>
+                                <td colspan="4" rowspan="1" style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui radio checkbox">
+                                        <input name="fractal" id="fractalMandal" value="mandal" onchange="resetMandel();" type="radio">
+                                        <label>Mandelbrot set</label></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined"></td>
+                                <td colspan="4" rowspan="1" style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui radio checkbox">
+                                        <input name="fractal" id="fractalJulia" value="julia" onchange="resetJulia();" type="radio">
+                                        <label>Julia set</label></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px; width: 97px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 143px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 145px;" align="undefined" valign="undefined"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">
+                                    <label>Color levels:</label>
+                                </td>
+                                <td colspan="4" rowspan="1" style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="colorLevels" type="text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px; width: 97px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 143px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined"></td>
+                                <td align="undefined" valign="undefined"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">
+                                    <label>Iteration limit:</label>
+                                </td>
+                                <td colspan="4" rowspan="1" style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="iterLimit" type="text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px; width: 97px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 143px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined"></td>
+                                <td align="undefined" valign="undefined"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">
+                                    <label>Q<sub>min</sub>:</label>
+                                </td>
+                                <td style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="qMin" type="text"></div>
+                                </td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined">
+                                    <label>Q<sub>max</sub>:</label>
+                                </td>
+                                <td style="width: 145px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="qMax" type="text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px; width: 97px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 143px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined"></td>
+                                <td align="undefined" valign="undefined"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">
+                                    <label>P<sub>min</sub>:</label>
+                                </td>
+                                <td style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="pMin" type="text"></div>
+                                </td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined">
+                                    <label>P<sub>max</sub>:</label>
+                                </td>
+                                <td align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="pMax" type="text"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 10px; width: 97px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 143px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined"></td>
+                                <td align="undefined" valign="undefined"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 97px;" align="undefined" valign="undefined">J<sub>re</sub>:</td>
+                                <td style="width: 143px;" align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="jRec" type="text"></div>
+                                </td>
+                                <td style="width: 16px;" align="undefined" valign="undefined"></td>
+                                <td style="width: 87px;" align="undefined" valign="undefined">J<sub>limit</sub>:</td>
+                                <td align="undefined" valign="undefined">
+                                    <div class="ui input"><input id="jLimit" type="text"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- End of options table -->
+            </td>
+            <td style="width: 24px;" align="undefined" valign="undefined"></td>
+            <td style="vertical-align: top;" colspan="1" rowspan="6">
+
+                <!-- Draw canvas -->
+                <canvas id="outCanvas" width="360" height="360"></canvas>
+                <!-- End of draw canvas -->
+
+                <table style="text-align: left; width: 100px;" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td align="undefined" valign="undefined" style="height: 20px;"></td>
+                    </tr>
+                    <tr>
+                        <td align="undefined" valign="undefined">
+                            <div class="column">
+                                <h4 class="ui top attached block header">Usage instructions</h4>
+
+                                <div class="ui bottom attached segment" style="width: 360px;">
+                                    <ul>
+                                        <li style="margin-bottom: 12px;">Select fractal option and press
+                                            <i>Generate</i> button to draw the appropriate fractal on above view.
+                                        </li>
+                                        <li style="margin-bottom: 12px;">Select area in output to drill down into more levels in generated fractal.</li>
+                                        <li style="margin-bottom: -12px;">Click on top of color palette to modify the colors points.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="undefined" valign="undefined"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+            </td>
+            <td align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="width: 477px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="width: 24px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="height: 22px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="width: 477px; height: 22px;" align="undefined" valign="undefined">
+                <div class="column">
+
+                    <!-- Color selector and color options area -->
+                    <h4 class="ui top attached block header">Color parameters</h4>
+
+                    <div class="ui bottom attached segment" style="text-align: left;">
+                        <div style="display: inline; margin-left: 20px; margin-right: 20px;">
+                            <input id="jscolorHost" value="000000" style="visibility: hidden; height: 0px; width: 0px; display: inherit; margin-bottom: -20px;" class="jscolor{ onFineChange:'colorSelection(this)' }">
+                            <canvas id="colorSelector" width="340" height="30"></canvas>
+                        </div>
+                        <div class="ui icon buttons" style="position: absolute; margin-top: -2px">
+                            <button class="ui button" title="Reset to default color palette" onclick="resetColorPalette();">
+                                <i class="reply icon"></i></button>
+                            <button class="ui button" title="Random color palette" onclick="generateRandomControlPalette();">
+                                <i class="paint brush icon"></i></button>
+                        </div>
+                    </div>
+                    <!-- end of color selector and color options area -->
+
+                </div>
+            </td>
+            <td style="width: 24px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="height: 22px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="width: 477px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="width: 24px; height: 22px;" align="undefined" valign="undefined"></td>
+            <td style="height: 22px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="width: 20px; height: 27px;" align="undefined" valign="undefined"></td>
+            <td style="width: 477px; height: 27px;" align="undefined" valign="undefined">
+
+                <table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td style="width: 120px;" align="undefined" valign="undefined">
+                            <button class="ui button" value="Generate" name="btnGenerate" type="button" onclick="runFractal();">Generate</button>
+                        </td>
+                        <td style="width: 10px;" align="undefined" valign="undefined"></td>
+                        <td style="width: 100px;" align="undefined" valign="undefined">
+                            <button class="ui button" value="Export" id="btnSave" name="btnSave" type="button" onclick="exportCanvasData();">Export</button>
+                        </td>
+                        <td style="width: 10px;" align="undefined" valign="undefined"></td>
+                        <td align="undefined" valign="undefined">
+                            <button class="ui button" value="Reset all" id="btnReset" name="btnReset" type="button" onclick="resetAll();">Reset all</button>
+                        </td>
+                        <td style="width: 10px;" align="undefined" valign="undefined"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+            <td style="width: 24px; height: 27px;" align="undefined" valign="undefined"></td>
+            <td style="height: 27px;" align="undefined" valign="undefined"></td>
+        </tr>
+        <tr>
+            <td style="height: 122px;" align="undefined" valign="undefined"></td>
+            <td style="height: 122px;" align="undefined" valign="undefined"></td>
+            <td style="height: 122px;" align="undefined" valign="undefined"></td>
+            <td style="height: 122px;" align="undefined" valign="undefined"></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- End of root layout table -->
+    <div id="copyright" style="font-size: 75%">
+        Copyright &copy; 2016
+        <a target="_blank" href="https://sites.google.com/site/jayakody2000lk">Dilshan R Jayakody</a>.
+        <br> This application is based on Delphi source code of <i>Mandel</i> 1.0 application by
+        <a target="_blank" href="http://www.cylog.org/">CyLog Software</a>.
+    </div>
+
+</div>
+
+<!-- Startup and system initialization routines. -->
+<script type="application/javascript">
+    initPage();
+    runFractal();
+</script>
+
+<br>
+</body>
+</html>
