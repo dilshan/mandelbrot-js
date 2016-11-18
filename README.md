@@ -5,7 +5,7 @@ This is simple online fractal generator developed using HTML5 (and Javascript). 
 
 HTML5 Mandelbrot Generator support generation of [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set) and [Julia set](https://en.wikipedia.org/wiki/Julia_set) fractals. 
 
-Online version of this HTML5 Mandelbrot Generator is available at [https://dilshan.github.io/mandelbrot-js/]
+Online version of this HTML5 Mandelbrot Generator is available at [https://dilshan.github.io/mandelbrot-js](https://dilshan.github.io/mandelbrot-js).
 
 Dependencies and libraries
 --------------------------
